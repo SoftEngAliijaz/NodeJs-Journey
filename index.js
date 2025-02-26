@@ -1,11 +1,10 @@
-const { log } = require("console");
-const express = require("express");
+import express from "express";
 const app = express();
 
-app.get("/", (req, res) => {
+app.get("/", (_, res) => {
     res.send("Server is running");
 });
 
 app.listen(7424, () => {
-    console.log("servve is ");
+    console.log("server is running");
 });
