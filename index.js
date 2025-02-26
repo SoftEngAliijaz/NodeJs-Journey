@@ -12,4 +12,4 @@ app.listen(1122, () => {
 
 const routes = require("./routes/route");
 
-app.use("/routes", routes);
+app.use("/routes", routes)
