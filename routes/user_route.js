@@ -11,7 +11,7 @@ router.get("/getUser", (req, res) => {
     res.json(user);
 });
 
-router.post("/addSomething", (req, res) => {
+router.post("/addUser", (req, res) => {
     console.log("Request Body:", req.body);
     const request = req.body;
 
@@ -24,10 +24,10 @@ router.post("/addSomething", (req, res) => {
 });
 
 
-router.patch("/pingpong", (req, res) => {
+router.patch("/pathUser", (req, res) => {
     const request = req.body;
 
-    if (request._username === "user") {
+    if (request.username === "username") {
         res.json({ "response": "Success!" });
     } else {
         res.status(400).json({ "Error": "Not Allowed" });
