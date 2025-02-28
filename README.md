@@ -1,16 +1,20 @@
-Creating a server in Node.js can be done in two ways:
+# Creating a Server in Node.js
+
+There are two ways to create a server in Node.js:
+
 1. **Using the built-in `http` module** (the "normal approach").
 2. **Using the `Express` framework** (a more advanced and flexible approach).
 
-Below, I'll explain both methods in detail.
+Below, both methods are explained in detail.
 
 ---
 
-## 1. **Normal Approach (Using `http` Module)**
+## 1. Normal Approach (Using `http` Module)
 
 This approach uses Node.js's built-in `http` module to create a server.
 
 ### Code Example:
+
 ```javascript
 const http = require("http");
 
@@ -27,23 +31,15 @@ server.listen(7424, () => {
 ```
 
 ### Explanation:
-1. **`http.createServer`**:
-   - Creates an HTTP server.
-   - Takes a callback function that handles incoming requests (`req`) and sends responses (`res`).
 
-2. **`res.write`**:
-   - Writes a response to the client.
-
-3. **`res.end`**:
-   - Signals that the response is complete.
-
-4. **`server.listen`**:
-   - Starts the server on the specified port (e.g., `7424`).
-
-5. **Callback in `server.listen`**:
-   - Optional. Logs a message when the server starts.
+1. **`http.createServer`**: Creates an HTTP server and takes a callback function that handles incoming requests (`req`) and sends responses (`res`).
+2. **`res.write`**: Writes a response to the client.
+3. **`res.end`**: Signals that the response is complete.
+4. **`server.listen`**: Starts the server on the specified port (`7424`).
+5. **Callback in `server.listen`**: Logs a message when the server starts.
 
 ### Run the Server:
+
 1. Save the file as `server.js`.
 2. Run the file using Node.js:
    ```bash
@@ -56,11 +52,12 @@ server.listen(7424, () => {
 
 ---
 
-## 2. **Using Express Framework**
+## 2. Using Express Framework
 
 Express is a popular Node.js framework that simplifies server creation and routing.
 
 ### Steps:
+
 1. Install Express:
    ```bash
    npm install express
@@ -69,6 +66,7 @@ Express is a popular Node.js framework that simplifies server creation and routi
 2. Create the server using Express.
 
 ### Code Example:
+
 ```javascript
 const express = require("express");
 
@@ -87,22 +85,15 @@ app.listen(7424, () => {
 ```
 
 ### Explanation:
-1. **`express()`**:
-   - Creates an Express application.
 
-2. **`app.get`**:
-   - Defines a route for HTTP GET requests to the root URL (`/`).
-
-3. **`res.send`**:
-   - Sends a response to the client.
-
-4. **`app.listen`**:
-   - Starts the server on the specified port (e.g., `7424`).
-
-5. **Callback in `app.listen`**:
-   - Optional. Logs a message when the server starts.
+1. **`express()`**: Creates an Express application.
+2. **`app.get`**: Defines a route for HTTP GET requests to the root URL (`/`).
+3. **`res.send`**: Sends a response to the client.
+4. **`app.listen`**: Starts the server on the specified port (`7424`).
+5. **Callback in `app.listen`**: Logs a message when the server starts.
 
 ### Run the Server:
+
 1. Save the file as `express_server.js`.
 2. Run the file using Node.js:
    ```bash
@@ -128,6 +119,7 @@ app.listen(7424, () => {
 ---
 
 ## Which Should You Use?
+
 - Use the **`http` module** if:
   - You need full control over the server.
   - You're building a very simple server.
