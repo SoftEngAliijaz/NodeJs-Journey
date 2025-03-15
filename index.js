@@ -1,38 +1,46 @@
 const express = require('express');
 const users = require('./MOCK_DATA.json');
+const fs = require('fs');
 
 const app = express();
 
 const PORT = 8080;
 
-///show welcome message
+/// Middleware - PLUGIN (LET ASSUME AS PLUGIN)
+app.use(express.urlencoded({ urlencoded: false }));
+
+/// Show welcome message
 app.get("/", (req, res) => {
     return res.send("Welcome to NodeJs Journey");
 });
 
-/// get all users list
-app.get("/api/getAllUsers", (req, res) => {
+/// Get all users list
+app.get("/api/users", (req, res) => {
     return res.json(users);
 });
 
-/// post new user
+/// Create a new user
 app.post("/api/users", (req, res) => {
-    return res.json({ status: "Pending" });
+    const body = req.body;
+    users.push({ ...body, id: users.length + 1 });
+    fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (error, response) => {
+        return res.json({ status: "Success", id: users.length });
+    });
 });
 
-/// specify operations
-app.route("/api/getAllUsers/:id")
+/// Specify operations for a single user
+app.route("/api/users/:id")
     .get((req, res) => {
         const id = Number(req.params.id);
 
-        /// check if its a number or not
+        /// Check if it's a number or not
         if (isNaN(id)) {
             res.status(404).json({ status: 404, message: "Invalid ID" });
         }
 
         const user = users.find((user) => user.id === id);
 
-        /// now find and show result
+        /// Now find and show result
         if (user) {
             return res.status(200).json(user);
         } else {
