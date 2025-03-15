@@ -1,0 +1,21 @@
+
+        ::1,
+        POST,
+        /api/users,
+        [object Object],
+        
+        ::1,
+        GET,
+        /api/users,
+        [object Object],
+        
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api/users,
+        BODY: {"first_name":"Muhammad","last_name":"Jahanzaib","email":"MuhammadJahanzaib@gmail.com","gender":"Male","job_title":"Python Developer"},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api/users,
+        BODY: {},
+    
