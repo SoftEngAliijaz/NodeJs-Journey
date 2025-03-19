@@ -19,3 +19,41 @@
         PATH: /api/users,
         BODY: {},
     
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api/users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api/users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api/users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api/users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api/users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api/getAllUsers/52,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api/users/52,
+        BODY: {},
+    IP: ::1, METHOD: GET, PATH: /api/users, BODY: {}
+IP: ::1, METHOD: POST, PATH: /api/users, BODY: {"first_name":"muhammad ali","last_name":"ijaz ahmad","email":"muhammadaliijazahmad@gmail.com","gender":"male","job_title":"Full Stack Developer"}
+IP: ::1, METHOD: GET, PATH: /api/users/101, BODY: {}
+IP: ::1, METHOD: GET, PATH: /, BODY: {}
