@@ -1,10 +1,51 @@
 const express = require("express");
 const users = require("./MOCK_DATA.json");
 const fs = require("fs");
-
+const mongoose = require("mongoose");
 const app = express();
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
+
+/// Connection
+mongoose
+  .connect("mongodb://localhost:27017/nodejs-journey", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((error) => {
+    console.error("MongoDB connection error:", error);
+  });
+
+//Schema
+const userSchema = new mongoose.Schema(
+  {
+    first_name: {
+      type: String,
+      required: true,
+    },
+    last_name: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+    job_title: {
+      type: String,
+    },
+    gender: {
+      type: String,
+    },
+  },
+  { timestamps: true }
+);
+
+const User = mongoose.model("user", userSchema);
 
 /// Middleware - PLUGIN (LET ASSUME AS PLUGIN)
 app.use(express.urlencoded({ urlencoded: false }));
@@ -21,7 +62,6 @@ app.use((req, res, next) => {
 
 /// if you want to end the middleware res or req anywhere
 /// you can using res.end that will stop to go further
-
 app.use((req, res, next) => {
   console.log("Hi from MiddleWare 2");
   next();
@@ -42,12 +82,34 @@ app.use((req, res, next) => {
 });
 
 /// Get all users list
-app.get("/api/users", (req, res) => {
-  return res.json(users);
+app.get("/api/users", async (req, res) => {
+  const getAllUsers = await User.find({});
+  return res.json(getAllUsers);
+});
+
+app.get("/users", async (req, res) => {
+  try {
+    const getAllUsers = await User.find({});
+
+    const html = `
+    <ul>
+      ${getAllUsers
+        .map(
+          (user) =>
+            `<li>${user.first_name}${user.last_name} - ${user.email}</li>`
+        )
+        .join("")}
+    </ul>
+    `;
+
+    res.status(200).send(html);
+  } catch (error) {
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 /// Create a new user
-app.post("/api/users", (req, res) => {
+app.post("/api/user", async (req, res) => {
   const body = req.body;
   if (
     !body ||
@@ -59,43 +121,71 @@ app.post("/api/users", (req, res) => {
   ) {
     return res.status(400).json({ message: "Bad Request" });
   }
-  users.push({ ...body, id: users.length + 1 });
-  fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (error, response) => {
-    return res.status(201).json({ status: "Success", id: users.length });
+
+  const result = await User.create({
+    first_name: body.first_name,
+    last_name: body.last_name,
+    email: body.email,
+    gender: body.gender,
+    job_title: body.job_title,
   });
+
+  console.log(`resut is ${result}`);
+  return res.status(201).json({ message: "User Created Successfully" });
+  // users.push({ ...body, id: users.length + 1 });
+  // fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (error, response) => {
+  //   return res.status(201).json({ status: "Success", id: users.length });
+  // });
 });
 
 /// Specify operations for a single user
 app
   .route("/api/users/:id")
-  .get((req, res) => {
-    const id = Number(req.params.id);
-
-    /// Check if it's a number or not
-    if (isNaN(id)) {
-      res.status(404).json({ status: 404, message: "Invalid ID" });
-    }
-
-    const user = users.find((user) => user.id === id);
-
-    /// Now find and show result
-    if (user) {
-      return res.status(200).json(user);
-    } else if (!user) {
-      return res.status(404).json({ status: 404, message: "User Not Found" });
-    } else {
-      return res.status(404).json({ status: 404, message: "User Not Found" });
+  .get(async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id);
+      if (user) {
+        return res.status(200).json(user);
+      } else {
+        return res.status(404).json({ status: 404, message: "User Not Found" });
+      }
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ status: 500, message: "Internal Server Error" });
     }
   })
-  .patch((req, res) => {
-    return res
-      .status(501)
-      .json({ status: 501, message: "PATCH is Not Implemented Yet" });
+  .patch(async (req, res) => {
+    try {
+      const updatedUser = await User.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true }
+      );
+      if (!updatedUser) {
+        return res.status(404).json({ status: 404, message: "User Not Found" });
+      }
+      return res.status(200).json(updatedUser);
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ status: 500, message: "Internal Server Error" });
+    }
   })
-  .delete((req, res) => {
-    return res
-      .status(501)
-      .json({ status: 501, message: "DELETE is Not Implemented Yet" });
+  .delete(async (req, res) => {
+    try {
+      const deletedUser = await User.findByIdAndDelete(req.params.id);
+      if (!deletedUser) {
+        return res.status(404).json({ status: 404, message: "User Not Found" });
+      }
+      return res
+        .status(200)
+        .json({ status: 200, message: "User Deleted Successfully" });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ status: 500, message: "Internal Server Error" });
+    }
   });
 
 app.listen(PORT, () => {

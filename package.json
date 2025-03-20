@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/SoftEngAliijaz/NodeJs-Journey#readme",
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "mongoose": "^8.12.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"

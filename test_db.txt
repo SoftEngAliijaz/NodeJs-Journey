@@ -1,0 +1,69 @@
+```
+# Database Schema & Model Overview
+
+## Schema - Define the Structure
+A schema defines the structure of the documents stored in a MongoDB collection. It specifies the fields, data types, and validation rules.
+
+Example Schema:
+```js
+const mongoose = require("mongoose");
+
+const userSchema = new mongoose.Schema({
+  first_name: { type: String, required: true },
+  last_name: { type: String, required: true },
+  email: { type: String, unique: true, required: true },
+  job_title: { type: String },
+  gender: { type: String },
+}, { timestamps: true }); // Adds createdAt and updatedAt fields
+```
+
+---
+
+## Schema - Model
+A **model** is a higher-level abstraction of the schema that allows us to interact with the database using Mongoose methods.
+
+Example Model:
+```js
+const User = mongoose.model("User", userSchema);
+```
+Using this model, we can perform CRUD (Create, Read, Update, Delete) operations.
+
+---
+
+## CRUD Operations
+
+### ➤ Create a User
+```js
+const newUser = await User.create({
+  first_name: "John",
+  last_name: "Doe",
+  email: "john.doe@example.com",
+  job_title: "Software Engineer",
+  gender: "Male"
+});
+console.log("User Created:", newUser);
+```
+
+### ➤ Read Users
+```js
+const users = await User.find();
+console.log("All Users:", users);
+```
+
+### ➤ Update a User
+```js
+const updatedUser = await User.findByIdAndUpdate(
+  userId, 
+  { job_title: "Senior Engineer" }, 
+  { new: true }
+);
+console.log("Updated User:", updatedUser);
+```
+
+### ➤ Delete a User
+```js
+await User.findByIdAndDelete(userId);
+console.log("User Deleted");
+```
+
+---

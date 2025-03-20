@@ -57,3 +57,179 @@
 IP: ::1, METHOD: POST, PATH: /api/users, BODY: {"first_name":"muhammad ali","last_name":"ijaz ahmad","email":"muhammadaliijazahmad@gmail.com","gender":"male","job_title":"Full Stack Developer"}
 IP: ::1, METHOD: GET, PATH: /api/users/101, BODY: {}
 IP: ::1, METHOD: GET, PATH: /, BODY: {}
+
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api-docs/,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api/createUser,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api/createUser,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api/createUser,
+        BODY: {"first_name":"Pyush","last_name":"garg","email":"pyushgarg@gmail.com","gender":"male","job_title":"Youtuber"},
+    
+        IP: ::1,
+        METHOD: POST,
+        PATH: /api/createUser,
+        BODY: {"first_name":"Pyush","last_name":"garg","email":"pyushgarg@gmail.com","gender":"male","job_title":"Youtuber"},
+    
+        IP: ::1,
+        METHOD: POST,
+        PATH: /api/user,
+        BODY: {"first_name":"Pyush","last_name":"garg","email":"pyushgarg@gmail.com","gender":"male","job_title":"Youtuber"},
+    
+        IP: ::1,
+        METHOD: POST,
+        PATH: /api/user,
+        BODY: {"first_name":"Pyush","last_name":"garg","email":"pyushgarg@gmail.com","gender":"male","job_title":"Youtuber"},
+    
+        IP: ::1,
+        METHOD: POST,
+        PATH: /api/user,
+        BODY: {"first_name":"Pyush","last_name":"garg","email":"pyushgarg@gmail.com","gender":"male","job_title":"Youtuber"},
+    
+        IP: ::1,
+        METHOD: POST,
+        PATH: /api/user,
+        BODY: {"first_name":"Pyush","last_name":"garg","email":"pyushgarg@gmail.com","gender":"male","job_title":"Youtuber"},
+    
+        IP: ::1,
+        METHOD: POST,
+        PATH: /api/user,
+        BODY: {"first_name":"Pyush","last_name":"garg","email":"pyushgarg@gmail.com","gender":"female","job_title":"Youtuber"},
+    
+        IP: ::1,
+        METHOD: POST,
+        PATH: /api/user,
+        BODY: {"first_name":"asiodjaosdj","last_name":"gargaisdhaiosdh","email":"ajksdhakjsdhaksjd@gmail.com","gender":"female","job_title":"alsjdlaskjdaskl"},
+    
+        IP: ::1,
+        METHOD: POST,
+        PATH: /api/user,
+        BODY: {"first_name":"asiodjaosdj","last_name":"gargaisdhaiosdh","email":"ajksdhakjsdhaksjd@gmail.com","gender":"female","job_title":"alsjdlaskjdaskl"},
+    
+        IP: ::1,
+        METHOD: POST,
+        PATH: /api/user,
+        BODY: {"first_name":"a","last_name":"a","email":"a@gmail.com","gender":"female","job_title":"aaa"},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /getFirstName,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /getFirstName,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /getFirstName,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /getFirstName,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /getFirstName,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /getFirstName,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /getFirstName,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api/users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api/users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api/users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api/users,
+        BODY: {},
+    
+        IP: ::ffff:127.0.0.1,
+        METHOD: GET,
+        PATH: /api/users,
+        BODY: {},
+    
+        IP: ::1,
+        METHOD: GET,
+        PATH: /api/users,
+        BODY: {},
+    
