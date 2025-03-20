@@ -233,3 +233,28 @@ IP: ::1, METHOD: GET, PATH: /, BODY: {}
         PATH: /api/users,
         BODY: {},
     
+              IP: ::1,
+              METHOD: GET,
+              PATH: /,
+              BODY: {},
+          
+              IP: ::1,
+              METHOD: GET,
+              PATH: /api/users,
+              BODY: {},
+          
+              IP: ::1,
+              METHOD: GET,
+              PATH: /api/users,
+              BODY: {},
+          
+              IP: ::1,
+              METHOD: GET,
+              PATH: /api/users/,
+              BODY: {"first_name":"a","last_name":"a","email":"a@gmail.com","gender":"female","job_title":"aaa"},
+          
+              IP: ::1,
+              METHOD: GET,
+              PATH: /api/users/,
+              BODY: {"first_name":"a","last_name":"a","email":"a@gmail.com","gender":"female","job_title":"aaa"},
+          
